@@ -309,6 +309,66 @@ br {
   .picsWithText .picBlock .picText {
     display: none;
   }
+  
+  /* Project Detail Page - Mobile */
+  .project-section {
+    margin-bottom: 32px;
+  }
+  
+  .project-section .title-1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  
+  .project-section .title-2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .project-section .title-3 {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .project-section .body-col-1 {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  
+  .project-metadata {
+    font-size: 13px;
+    margin: 16px 0 20px 0;
+    gap: 6px;
+  }
+  
+  .image-column-1 {
+    margin-bottom: 20px;
+  }
+  
+  .image-column-2 {
+    margin-bottom: 20px;
+    grid-gap: 8px;
+  }
+  
+  .image-column-4 {
+    margin-top: 16px;
+    grid-gap: 8px;
+  }
+  
+  .video-embed {
+    margin-top: 16px;
+  }
+  
+  .video-play-button svg {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .photo-album-grid-3x3 {
+    grid-gap: 6px;
+  }
 }
 
 /* Project Detail Page Styles */
@@ -434,12 +494,56 @@ br {
 
 @media (max-width: 800px) {
   .project-section {
-    margin-bottom: 48px;
+    margin-bottom: 40px;
   }
   
-  .project-section .title-1,
-  .project-section .title-2 {
+  .project-section .title-1 {
+    font-size: 32px;
     margin-bottom: 20px;
+  }
+  
+  .project-section .title-2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .project-section .title-3 {
+    font-size: 18px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+  
+  .project-section .body-col-1 {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .project-metadata {
+    font-size: 14px;
+    margin: 20px 0 24px 0;
+  }
+  
+  .image-column-1 {
+    margin-bottom: 24px;
+  }
+  
+  .image-column-2 {
+    margin-bottom: 24px;
+    grid-gap: 12px;
+  }
+  
+  .image-column-4 {
+    margin-top: 20px;
+    grid-gap: 12px;
+  }
+  
+  .video-embed {
+    margin-top: 20px;
+  }
+  
+  .photo-album-grid-3x3 {
+    grid-gap: 8px;
   }
   
   .project-section .body-col-1 {

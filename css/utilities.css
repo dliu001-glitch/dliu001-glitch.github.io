@@ -12,6 +12,10 @@
   --gutter: 24px;
   --content-max-width: 1200px;
   --primary-white: #CACACA;
+  /* Mobile bottom navigation - 底部双固定栏高度 */
+  --nav-h: 56px;
+  --footer-h: 56px;
+  --bottom-nav-h: 60px; /* 保留兼容性 */
 }
 
 /* Utility Classes */
@@ -263,9 +267,39 @@
   .body-col-3 {
     column-count: 1;
   }
+  
+  .title-1 {
+    font-size: 32px;
+  }
+  
+  .title-2 {
+    font-size: 24px;
+  }
+  
+  .title-3 {
+    font-size: 20px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+  
+  .image-column-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .image-column-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .image-column-2 img {
+    min-height: 250px;
+  }
 }
 
 @media (max-width: 500px) {
+  .page-shell {
+    padding: 24px 16px 60px;
+  }
+  
   .currProPage {
     display: flex;
     flex-direction: column;
@@ -278,5 +312,42 @@
   }
   .bio-container .currContent {
     font-size: 8px;
+  }
+  
+  .title-1 {
+    font-size: 28px;
+  }
+  
+  .title-2 {
+    font-size: 20px;
+  }
+  
+  .title-3 {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .body-col-1 {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .body-col-2,
+  .body-col-3 {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .image-column-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .image-column-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .image-column-2 img {
+    min-height: 200px;
   }
 }

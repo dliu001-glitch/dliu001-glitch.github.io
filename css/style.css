@@ -8,12 +8,18 @@ body {
   font-family: "Roboto", sans-serif;
   line-height: 1.7em;
 }
+html {
+  background-color: #000;
+  height: 100%;
+  min-height: 100vh;
+}
 body {
   background-color: var(--bg-main);
   padding-top: 80px;
   padding-left: 20%;
   padding-right: 20%;
   padding-bottom: 10vh;
+  min-height: 100vh;
 }
 
 a {
@@ -35,9 +41,9 @@ address a {
   display: block;
 }
 
-/* Navigation */
-#nav-bar,
-#nav-bar.side-nav {
+/* Navigation - 桌面端样式 */
+#nav-bar:not(.bottom-nav),
+#nav-bar.side-nav:not(.bottom-nav) {
   position: fixed;
   top: 50%;
   left: 0;
@@ -46,6 +52,75 @@ address a {
   height: 285px;
   background-color: #0f0f0f;
   z-index: 10;
+}
+
+/* ========================================
+   Mobile Fix Override - 移动端修复覆盖
+   ======================================== */
+@media (max-width: 768px) {
+  /* A) 修复 body 不满屏问题 */
+  html,
+  body {
+    height: 100%;
+    min-height: 100vh;
+    background: #000;
+    margin: 0;
+  }
+  
+  body {
+    padding-bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom));
+  }
+  
+  /* B) 修复 nav fixed 定位失效 - 覆盖桌面端的 transform */
+  #nav-bar,
+  #nav-bar.side-nav {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    height: var(--bottom-nav-h) !important;
+    min-height: var(--bottom-nav-h) !important;
+    max-height: var(--bottom-nav-h) !important;
+    background: rgba(0, 0, 0, 0.92) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 9999 !important;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) !important;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5);
+    margin: 0 !important;
+  }
+  
+  /* C) 修复 footer 空白问题 */
+  footer {
+    height: auto !important;
+    min-height: 0 !important;
+    position: static !important;
+    margin-top: 20px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    background-color: #000 !important;
+  }
+  
+  .footer {
+    background-color: #000 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* D) 修复可能导致空白的容器 */
+  #specialProject {
+    min-height: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  #projectList {
+    min-height: 0 !important;
+    margin-bottom: 0 !important;
+  }
 }
 .top-nav {
   width: 100%;
@@ -449,6 +524,7 @@ footer {
   bottom: 0;
   left: 0;
   z-index: 1000;
+  background-color: #000;
 }
 
 .footer {
@@ -462,7 +538,7 @@ footer {
   font-weight: 400;
   font-size: 16px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #000;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
@@ -595,41 +671,140 @@ footer {
 }
 
 @media (max-width: 800px) {
+  html,
+  body {
+    min-height: 100vh !important;
+    height: 100% !important;
+  }
+  
   body {
     padding-left: 0;
+    padding-right: 0;
+    padding-top: 20px;
+    padding-bottom: calc(var(--nav-h) + var(--footer-h) + env(safe-area-inset-bottom));
+    display: block;
+    overflow-x: hidden !important;
   }
-  #nav-bar {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10vh;
-    border-right: none;
-    background-color: rgba(0, 0, 0, 0.3);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+  
+  /* 手机端卡片宽度修复 - 防止超出屏幕 */
+  #specialProject,
+  #projectList {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding-left: 4% !important;
+    padding-right: 4% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+  }
+  
+  .thumbnail-link {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+  
+  .proThumbnail {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  
+  /* 手机端隐藏红色条，避免超出屏幕 */
+  .thumbnail-red-bar {
+    display: none !important;
+  }
+  
+  /* 移动端导航栏 - 直接应用到底部，不需要.bottom-nav类 */
+  #nav-bar,
+  #nav-bar.side-nav {
+    position: fixed !important;
+    top: auto !important;
+    bottom: calc(var(--footer-h) + env(safe-area-inset-bottom)) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: var(--nav-h) !important;
+    min-height: var(--nav-h) !important;
+    max-height: var(--nav-h) !important;
+    transform: none !important;
+    z-index: 10000 !important;
+    background: rgba(0, 0, 0, 0.92) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5) !important;
+    margin: 0 !important;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) !important;
+  }
+  
+  footer {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: var(--footer-h) !important;
+    z-index: 9999 !important;
+    background: #000 !important;
   }
   .top-nav {
     width: 100%;
     height: 100%;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-    font-size: 16px;
+    justify-content: center;
+    padding: 0;
+    font-size: 14px;
     gap: 0;
   }
   .nav-menu {
-    width: auto;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
   }
   .nav-menu ul {
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
-    gap: 24px;
+    justify-content: space-around;
+    gap: 0;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
   }
   .nav-menu ul li {
     margin-left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+  .nav-menu ul li a {
+    padding: 0;
+    font-size: 14px;
+    white-space: nowrap;
+    line-height: 1.2;
+    width: 100%;
+    min-height: 44px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-strong);
+  }
+  .nav-menu ul li a::after {
+    bottom: 4px;
+    width: 80%;
+    height: 2px;
+  }
+  .nav-menu ul li .throughLine {
+    display: none;
   }
   #intro-padding {
     height: 100%;
@@ -688,22 +863,209 @@ footer {
     margin-top: 1em;
   }
   footer {
-    height: 10vh;
-    position: fixed;
-    bottom: 0;
-    z-index: 1000;
+    height: auto !important;
+    min-height: 0 !important;
+    position: static !important;
+    bottom: auto;
+    z-index: 1;
+    margin-top: 20px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    background-color: #000 !important;
   }
   .footer {
-    background-color: white;
-    height: 100%;
+    background-color: #000 !important;
+    height: auto !important;
+    color: white;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
   }
   /* About Page */
   #bio {
     width: 100%;
     height: 80vh;
   }
+  
+  /* Home Page - Special Project */
+  #specialProject {
+    min-height: auto;
+    padding: 20px 5%;
+    order: 1;
+    margin-bottom: 0;
+  }
+  #specialProject .proGrid-1 {
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+  }
+  
+  /* Project List Page */
+  #projectList {
+    padding: 20px 5%;
+    order: 1;
+  }
+  #projectList .proGrid-1 {
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+  }
+  
+  .thumbnail-title {
+    font-size: 20px;
+  }
+  
+  .thumbnail-description {
+    font-size: 13px;
+  }
+  
+  .thumbnail-tags .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+  
+  /* About Page */
+  .about-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 32px;
+  }
+  
+  .profile-image {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+  }
+  
+  .profile-info {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+  }
+  
+  .content-sections {
+    grid-column: 1;
+    grid-row: 3;
+    gap: 32px;
+  }
+  
+  .profile-name {
+    font-size: 32px;
+  }
+  
+  .profile-tagline {
+    font-size: 16px;
+  }
+  
+  .profile-bio p {
+    font-size: 14px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+  }
+  
+  .item-date {
+    width: 100px;
+    font-size: 14px;
+  }
+  
+  .item-content {
+    font-size: 14px;
+  }
+  
+  .section-list li {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  /* Blog Page */
+  .blog-container {
+    gap: 24px;
+    padding: 20px 5%;
+    order: 1;
+  }
+  
+  .blog-entry {
+    padding: 16px;
+  }
+  
+  .blog-title {
+    font-size: 18px;
+  }
+  
+  .blog-description {
+    font-size: 14px;
+  }
+  
+  .blog-date {
+    font-size: 13px;
+  }
+  
+  .blog-thumbnail {
+    min-width: 120px;
+    width: 120px;
+  }
 }
 @media (max-width: 500px) {
+  :root {
+    --bottom-nav-h: 56px;
+  }
+  
+  html,
+  body {
+    min-height: 100vh !important;
+    height: 100% !important;
+  }
+  
+  body {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 20px;
+    padding-bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom));
+  }
+  
+  #nav-bar.bottom-nav,
+  #nav-bar.side-nav.bottom-nav {
+    height: var(--bottom-nav-h) !important;
+    min-height: var(--bottom-nav-h) !important;
+    max-height: var(--bottom-nav-h) !important;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom)) !important;
+  }
+  
+  .nav-menu ul li a {
+    min-height: 44px;
+    font-size: 12px;
+  }
+  
+  #specialProject {
+    padding: 20px 4%;
+  }
+  
+  #projectList {
+    padding: 20px 4%;
+  }
+  
+  .about-container {
+    padding: 20px 4%;
+  }
+  
+  .blog-container {
+    padding: 20px 4%;
+  }
+  
+  .top-nav {
+    padding: 0;
+    font-size: 13px;
+  }
+  
+  .nav-menu ul {
+    gap: 0;
+  }
+  
+  .nav-menu ul li a {
+    padding: 0;
+    font-size: 12px;
+    height: 100%;
+  }
+  
   .subNav h1 {
     text-align: center;
     font-size: 10px;
@@ -718,7 +1080,6 @@ footer {
   }
   .project .cornerText p {
     font-size: 0.5rem;
-    /* line-height: 1rem; */
     line-height: 1.2;
     width: 100%;
   }
@@ -732,6 +1093,128 @@ footer {
   .abt-content {
     font-size: 0.8rem;
     line-height: 1.6em;
+  }
+  
+  /* Home Page */
+  #specialProject {
+    padding: 16px 0;
+  }
+  
+  #specialProject .proGrid-1 {
+    grid-gap: 12px;
+  }
+  
+  .thumbnail-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .thumbnail-description {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .thumbnail-tags {
+    gap: 6px;
+  }
+  
+  .thumbnail-tags .tag {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+  
+  .thumbnail-overlay {
+    padding: 16px;
+  }
+  
+  /* Project List Page */
+  #projectList .proGrid-1 {
+    grid-gap: 12px;
+  }
+  
+  /* About Page */
+  .about-container {
+    gap: 24px;
+  }
+  
+  .profile-name {
+    font-size: 28px;
+  }
+  
+  .profile-tagline {
+    font-size: 14px;
+  }
+  
+  .profile-bio p {
+    font-size: 13px;
+  }
+  
+  .profile-contact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .contact-email {
+    font-size: 14px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+  }
+  
+  .item-date {
+    width: 90px;
+    font-size: 13px;
+  }
+  
+  .item-content {
+    font-size: 13px;
+  }
+  
+  .content-sections {
+    gap: 24px;
+  }
+  
+  .content-section {
+    gap: 16px;
+  }
+  
+  /* Blog Page */
+  .blog-container {
+    gap: 16px;
+  }
+  
+  .blog-entry {
+    padding: 12px;
+  }
+  
+  .blog-title {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  
+  .blog-description {
+    font-size: 13px;
+  }
+  
+  .blog-date {
+    font-size: 12px;
+  }
+  
+  .blog-thumbnail {
+    min-width: 100px;
+    width: 100px;
+  }
+  
+  .blog-arrow {
+    width: 20px;
+    min-width: 20px;
+  }
+  
+  .blog-arrow img {
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -1012,4 +1495,495 @@ footer {
 
 .blog-entry:hover .blog-arrow img {
   filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%) drop-shadow(0 0 1px var(--primary-blue)) drop-shadow(0 0 1px var(--primary-blue));
+}
+
+/* ========================================
+   Mobile Fix Override - 移动端修复覆盖
+   解决：1) 导航固定底部 2) footer空白 3) body不满屏
+   ======================================== */
+@media (max-width: 768px) {
+  /* D) 修复 body 不满屏（背景断层） */
+  html,
+  body {
+    height: 100% !important;
+    min-height: 100vh !important;
+    background: #000 !important;
+    margin: 0 !important;
+  }
+  
+  body {
+    padding-bottom: calc(var(--bottom-nav-h) + env(safe-area-inset-bottom)) !important;
+  }
+  
+  /* A) 修复 nav fixed 定位失效 - 覆盖桌面端的 transform 和所有定位 */
+  #nav-bar,
+  #nav-bar.side-nav {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    height: var(--bottom-nav-h) !important;
+    min-height: var(--bottom-nav-h) !important;
+    max-height: var(--bottom-nav-h) !important;
+    background: rgba(0, 0, 0, 0.92) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    z-index: 9999 !important;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) !important;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5) !important;
+    margin: 0 !important;
+  }
+  
+  /* C) 修复 footer 空白问题 */
+  footer {
+    height: auto !important;
+    min-height: 0 !important;
+    position: static !important;
+    margin-top: 20px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    background-color: #000 !important;
+  }
+  
+  .footer {
+    background-color: #000 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+  }
+  
+  /* 修复可能导致空白的容器 */
+  #specialProject {
+    min-height: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  #projectList {
+    min-height: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  .about-container {
+    margin-bottom: 0 !important;
+  }
+  
+  .blog-container {
+    margin-bottom: 0 !important;
+  }
+}
+
+/* ========================================
+   Mobile Bottom Bars Override - 移动端底部双固定栏
+   实现：nav固定在footer上方，两者都固定在屏幕底部
+   ======================================== */
+@media (max-width: 768px) {
+  /* 全局消除白底 */
+  html,
+  body {
+    background: #000 !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+    min-height: 100vh !important;
+    height: 100% !important;
+  }
+  
+  /* 内容区预留底部空间（nav高度 + footer高度 + safe-area） */
+  body {
+    padding-bottom: calc(var(--nav-h) + var(--footer-h) + env(safe-area-inset-bottom)) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  /* 手机端卡片宽度修复 - 防止超出屏幕 */
+  #specialProject,
+  #projectList {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding-left: 4% !important;
+    padding-right: 4% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+  }
+  
+  .thumbnail-link {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+  
+  .proThumbnail {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  
+  /* 手机端隐藏红色条，避免超出屏幕 */
+  .thumbnail-red-bar {
+    display: none !important;
+  }
+  
+  /* Blog 页面 - 手机端上下布局：图片在上，文字在中，箭头在下 */
+  .blog-link {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 16px !important;
+    padding: 24px 0 !important;
+  }
+  
+  .blog-thumbnail {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 200px !important;
+    min-height: 200px !important;
+    align-self: stretch !important;
+    order: 1 !important;
+  }
+  
+  .blog-content {
+    order: 2 !important;
+    width: 100% !important;
+  }
+  
+  .blog-arrow {
+    order: 3 !important;
+    align-self: flex-end !important;
+    width: 24px !important;
+    height: 24px !important;
+    margin-top: 8px !important;
+  }
+  
+  /* Nav 固定在 footer 上方 */
+  #nav-bar,
+  #nav-bar.side-nav,
+  #nav-bar.bottom-nav,
+  #nav-bar.side-nav.bottom-nav {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: calc(var(--footer-h) + env(safe-area-inset-bottom)) !important;
+    top: auto !important;
+    width: 100% !important;
+    height: var(--nav-h) !important;
+    min-height: var(--nav-h) !important;
+    max-height: var(--nav-h) !important;
+    transform: none !important;
+    z-index: 10000 !important;
+    background: rgba(0, 0, 0, 0.92) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5) !important;
+    margin: 0 !important;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom)) !important;
+    display: flex !important;
+  }
+  
+  /* Footer 固定在屏幕最底部 */
+  footer {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    height: var(--footer-h) !important;
+    min-height: var(--footer-h) !important;
+    max-height: var(--footer-h) !important;
+    z-index: 9999 !important; /* 必须小于 nav，保证 nav 在 footer 上方 */
+    background: #000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .footer {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #000 !important;
+    color: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+  
+  /* 注意：移动端显示导航栏，不需要隐藏 */
+  
+  /* 确保 nav 内部布局正确 */
+  .top-nav {
+    width: 100% !important;
+    height: 100% !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+  
+  .nav-menu {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .nav-menu ul {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+  
+  .nav-menu ul li {
+    flex: 1 !important;
+    width: auto !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .nav-menu ul li a {
+    width: 100% !important;
+    min-height: 44px !important;
+    height: 100% !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    color: var(--text-strong) !important;
+    text-align: center !important;
+  }
+  
+  .nav-menu ul li .throughLine {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   Mobile & Tablet - 卡片默认显示hover状态
+   移动端和平板尺寸下，卡片默认应用hover样式
+   ======================================== */
+@media (max-width: 1024px) {
+  /* 平板端 - body 高度撑满屏幕 */
+  html,
+  body {
+    min-height: 100vh !important;
+    height: 100% !important;
+  }
+  
+  /* 平板端卡片列表改为单列排布 */
+  #specialProject .proGrid-1 {
+    grid-template-columns: 1fr !important;
+    grid-gap: 16px !important;
+  }
+  
+  #projectList .proGrid-1 {
+    grid-template-columns: 1fr !important;
+    grid-gap: 16px !important;
+  }
+  
+  /* About Page - 平板端单列布局，图片在最上方 */
+  .about-container {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    gap: 32px !important;
+  }
+  
+  .profile-image {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    align-self: start !important;
+    width: 100% !important;
+  }
+  
+  .profile-info {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    align-self: start !important;
+  }
+  
+  .content-sections {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+    gap: 32px !important;
+  }
+  
+  /* 手机端卡片宽度修复 - 防止超出屏幕 */
+  @media (max-width: 768px) {
+    #specialProject,
+    #projectList {
+      width: 100% !important;
+      max-width: 100vw !important;
+      padding-left: 4% !important;
+      padding-right: 4% !important;
+      box-sizing: border-box !important;
+      overflow-x: hidden !important;
+    }
+    
+    .thumbnail-link {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+    }
+    
+    .proThumbnail {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      overflow: hidden !important;
+    }
+    
+    /* 手机端隐藏红色条，避免超出屏幕 */
+    .thumbnail-red-bar {
+      display: none !important;
+    }
+  }
+  
+  /* 确保红色部分完整显示 - 平板端（769px-1024px）给body添加右侧空间 */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    body {
+      padding-right: calc(var(--hover-width, 20%) + 8px) !important;
+      overflow-x: visible !important;
+    }
+    
+    #specialProject,
+    #projectList {
+      overflow-x: visible !important;
+    }
+    
+    .thumbnail-link {
+      z-index: 1 !important;
+      overflow: visible !important;
+      margin-right: 0 !important;
+      position: relative !important;
+    }
+    
+    .proThumbnail {
+      overflow: visible !important;
+    }
+    
+    /* 确保红色条在容器内完整显示 */
+    .thumbnail-red-bar {
+      position: absolute !important;
+      left: 100% !important;
+      right: auto !important;
+      top: 0 !important;
+      height: 100% !important;
+    }
+  }
+  
+  /* 项目卡片 - 默认显示hover状态 */
+  .proThumbnail::before {
+    filter: blur(4px) !important;
+  }
+  
+  .proThumbnail::after {
+    opacity: 1 !important;
+  }
+  
+  .thumbnail-overlay {
+    opacity: 1 !important;
+    padding: clamp(12px, 2vw, 24px) !important; /* 自适应padding */
+  }
+  
+  .thumbnail-link .thumbnail-red-bar {
+    opacity: 1 !important;
+    width: var(--hover-width, 20%) !important;
+    position: absolute !important;
+    left: 100% !important;
+    right: auto !important;
+  }
+  
+  /* 项目卡片文字自适应大小 - 确保完整显示 */
+  .thumbnail-title {
+    font-size: clamp(18px, 2.5vw, 24px) !important; /* 平板：20-24px，移动端：18px */
+    line-height: 1.3 !important;
+    margin-bottom: clamp(8px, 1vw, 12px) !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  .thumbnail-description {
+    font-size: clamp(12px, 1.4vw, 14px) !important; /* 平板：13-14px，移动端：12px */
+    line-height: 1.5 !important;
+    margin-bottom: clamp(10px, 1.2vw, 16px) !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important; /* 最多显示3行 */
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  
+  .thumbnail-tags {
+    gap: clamp(6px, 0.8vw, 8px) !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .thumbnail-tags .tag {
+    font-size: clamp(10px, 1.1vw, 12px) !important; /* 平板：11-12px，移动端：10px */
+    padding: clamp(2px, 0.4vw, 4px) clamp(8px, 1vw, 12px) !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* 博客卡片 - 默认显示hover状态 */
+  .blog-entry {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+  }
+  
+  .blog-thumbnail img {
+    filter: grayscale(0%) !important;
+  }
+  
+  .blog-entry .blog-description {
+    color: var(--text-strong) !important;
+  }
+  
+  .blog-entry .blog-arrow {
+    opacity: 1 !important;
+    transform: translateX(8px) !important;
+  }
+  
+  .blog-entry .blog-arrow img {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%) drop-shadow(0 0 1px var(--primary-blue)) drop-shadow(0 0 1px var(--primary-blue)) !important;
+  }
+  
+  /* 博客卡片文字自适应大小 */
+  .blog-title {
+    font-size: clamp(16px, 2vw, 20px) !important;
+    line-height: 1.3 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  .blog-description {
+    font-size: clamp(13px, 1.5vw, 16px) !important;
+    line-height: 1.5 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important; /* 最多显示2行 */
+    line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  
+  /* 注意：移动端和平板下，卡片默认显示hover状态，hover效果已被默认状态覆盖 */
 }
