@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dongyuan Liu | Pro_Working Space</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="stylesheet" href="css/projectsStyle.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/89cdcfacd7.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body style="background: var(--bg-main); color: var(--text-strong)">
+    <div class="loading">
+      <div class="loadingContainer">
+        <div class="loadRect" id="rect-1"></div>
+        <div class="loadRect" id="rect-2"></div>
+        <div class="loadRect" id="rect-3"></div>
+        <div class="loadRect" id="rect-4"></div>
+      </div>
+      <h3>loading...</h3>
+    </div>
+    <nav id="nav-bar" class="side-nav">
+      <div class="top-nav">
+        <div class="nav-menu">
+          <ul>
+            <li>
+              <a href="index.html">Home</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="projects_artisticList.html">Projects</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="about.html">About</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="blogs.html">Blog</a>
+              <div class="throughLine"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-shell stack">
+      <!-- Section 1: Project Title and Introduction -->
+      <section class="project-section">
+        <h1 class="title-1">World of Flowers</h1>
+        <p class="body-col-1">
+          'The World of Flowers' is trying to imitate flowers from bloom to
+          dying by the way of creative coding. In 'Autumn', by Lia, whose
+          projects mainly focus on showing nature patterns by the way of
+          creative coding. she used algorithms to simulate the scene of Autumn,
+          such as the falling leaves, and the yellow colors in Autumn. I refer
+          to the motion process in Lia's projects, and use the algorithms to
+          achieve the process from blooming to withering.
+        </p>
+        <div class="project-metadata">
+          <span>Date: Mar. 2019</span>
+          <span>Key Words: Creative coding, Motion Graphic, Nature, Processing</span>
+        </div>
+        <div class="image-column-1">
+          <img src="img/worldofFlower/fp-000386.png" alt="World of Flowers" />
+        </div>
+      </section>
+
+      <!-- Section 2: Algorithm and Implementation -->
+      <section class="project-section">
+        <h2 class="title-2">Algorithm and Implementation</h2>
+        <div class="image-column-1">
+          <img src="img/worldofFlower/motion.png" alt="Flower motion" />
+        </div>
+        <p class="body-col-1">
+          Algorithm is used to simulate the process of flowers' growth and
+          withering and the shape of flowers. The parameters, like the number
+          of petals, colors, growth speed, and so on, are different to
+          generate different shapes of flowers, so I used 'class'to assign
+          them specific parameters.
+        </p>
+        <div class="image-column-1">
+          <img src="img/worldofFlower/motion2.png" alt="Flower motion 2" />
+        </div>
+        <p class="body-col-1">
+          Furthermore, many translate functions are used to create single
+          flower, and then for loop is used to calculate the positions of
+          these flowers. As the consequence, much more colorful flowers will
+          be generated over time. As for the color, I set it from HSB system,
+          so that I can extract different color, the value of hue, with the
+          same value of saturation and brightness. Low value in transparency
+          and black background will create a sense of fluorescence.
+        </p>
+      </section>
+
+      <!-- Section 3: Video -->
+      <section class="project-section">
+        <div class="video-embed">
+          <iframe
+            src="https://player.vimeo.com/video/316222125"
+            width="640"
+            height="650"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            title="World of Flowers">
+          </iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer">
+        <p>Dongyuan Liu &copy;2020, All Rights Reserved</p>
+      </div>
+    </footer>
+    <script src="./js/loading.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dongyuan Liu | New media artist</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/89cdcfacd7.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="loading">
+      <div class="loadingContainer">
+        <div class="loadRect" id="rect-1"></div>
+        <div class="loadRect" id="rect-2"></div>
+        <div class="loadRect" id="rect-3"></div>
+        <div class="loadRect" id="rect-4"></div>
+      </div>
+      <h3>loading...</h3>
+    </div>
+
+    <nav id="nav-bar" class="side-nav">
+      <div class="top-nav">
+        <div class="nav-menu">
+          <ul>
+            <li>
+              <a href="index.html">Home</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="projects_artisticList.html">Projects</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="about.html">About</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="blogs.html">Blog</a>
+              <div class="throughLine"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+
+
+    <section id="specialProject">
+      <div class="proGrid proGrid-1">
+        <a href="pro_Lively.html" class="thumbnail-link">
+          <div class="proThumbnail" id="lively">
+            <div class="thumbnail-overlay">
+              <h3 class="thumbnail-title">Lively</h3>
+              <p class="thumbnail-description">Lively is a robotic performance which is trying to create an illusion that simulates Chinese new year atmosphere from my childhood memory.</p>
+              <div class="thumbnail-tags">
+                <span class="tag">Ready Made Goods</span>
+                <span class="tag">Robotic Performance</span>
+                <span class="tag">Arduino</span>
+                <span class="tag">Immersive Environment</span>
+              </div>
+            </div>
+          </div>
+          <div class="thumbnail-red-bar">
+            <img src="img/icons/thumbnail-chevron-right.svg" alt="arrow" class="thumbnail-arrow">
+          </div>
+        </a>
+        <a href="pro_machinesMemory.html" class="thumbnail-link">
+          <div class="proThumbnail" id="machinesMemory">
+            <div class="thumbnail-overlay">
+              <h3 class="thumbnail-title">machinesMemory</h3>
+              <p class="thumbnail-description">A multi-screen art installation that presents the idea of a machine's memory.</p>
+              <div class="thumbnail-tags">
+                <span class="tag">Data Aesthetics</span>
+                <span class="tag">Multi-screen</span>
+                <span class="tag">Machine Learning</span>
+              </div>
+            </div>
+          </div>
+          <div class="thumbnail-red-bar">
+            <img src="img/icons/thumbnail-chevron-right.svg" alt="arrow" class="thumbnail-arrow">
+          </div>
+        </a>
+      </div>
+    </section>
+
+    
+    <footer>
+      <div class="footer">
+        <p>Dongyuan Liu &copy;2020, All Rights Reserved</p>
+      </div>
+    </footer>
+
+    <script src="./js/loading.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/thumbnailResize.js"></script>
+  </body>
+</html>

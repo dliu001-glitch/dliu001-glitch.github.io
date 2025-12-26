@@ -1,0 +1,166 @@
+.throughLine {
+  background-color: black;
+  width: 0%;
+  height: 2px;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transition: 0.2s ease-in-out;
+  opacity: 0;
+}
+.loading {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-main);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading .loadingContainer {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.loading .loadingContainer .loadRect {
+  width: 0px;
+  background-color: black;
+  margin: 0 8px;
+}
+.loading .loadingContainer #rect-1 {
+  height: 0px;
+  animation: rectGrowth 0.6s 0s infinite alternate;
+}
+.loading .loadingContainer #rect-2 {
+  height: 0px;
+  animation: rectGrowth 0.6s 0.1s infinite alternate;
+}
+.loading .loadingContainer #rect-3 {
+  height: 0px;
+  animation: rectGrowth 0.6s 0.2s infinite alternate;
+}
+.loading .loadingContainer #rect-4 {
+  height: 0px;
+  animation: rectGrowth 0.6s 0.3s infinite alternate;
+}
+@keyframes rectGrowth {
+  to {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: white;
+  }
+}
+.loading h3 {
+  font-weight: 400;
+}
+/* Home Button */
+.home-button:hover a {
+  color: var(--primary-blue);
+}
+.home-button:hover .throughLine {
+  background-color: var(--primary-blue);
+  opacity: 1;
+  width: 120%;
+  left: -10%;
+}
+
+/* navigation menu */
+.nav-menu ul li:hover {
+  background-color: var(--primary-blue);
+}
+.nav-menu ul li:hover .throughLine {
+  background-color: var(--primary-white);
+  opacity: 1;
+  width: 100%;
+  transform: translateX(-50%);
+}
+
+.subNav h1:hover a {
+  color: var(--primary-blue);
+}
+.subNav h1:hover .throughLine {
+  background-color: var(--primary-blue);
+  opacity: 1;
+  width: 120%;
+  left: -10%;
+}
+.top-nav {
+  animation-name: navAppear;
+  animation-duration: 0.4s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate-reverse;
+}
+@keyframes navAppear {
+  to {
+    opacity: 0;
+  }
+}
+.intro-text {
+  animation-name: introText-slideIn;
+  animation-duration: 0.4s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes introText-slideIn {
+  to {
+    top: 0;
+    left: -100px;
+    opacity: 0;
+  }
+}
+.portrait {
+  animation-name: portrait-slideIn;
+  animation-duration: 0.4s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate-reverse;
+}
+@keyframes portrait-slideIn {
+  to {
+    top: 0;
+    left: 100px;
+    opacity: 0;
+  }
+}
+
+/* About Page */
+.bio-container .sideBar ul li:hover {
+  color: var(--primary-blue);
+}
+.bio-container .sideBar ul li:hover .throughLine {
+  background-color: var(--primary-blue);
+  opacity: 1;
+  width: 120%;
+  left: -10%;
+}
+
+/* Project Page */
+.subNav h1:hover {
+  color: var(--primary-blue);
+}
+.subNav h1:hover .throughLine {
+  background-color: var(--primary-blue);
+  opacity: 1;
+  width: 100%;
+  left: 0%;
+}
+.projectsArea .project:hover img {
+  filter: grayscale(0) blur(0);
+  object-fit: cover;
+}
+.projectsArea .project:hover .cornerText {
+  opacity: 0;
+}
+@media (max-width: 500px) {
+  .throughLine {
+    display: none;
+  }
+}

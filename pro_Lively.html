@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dongyuan Liu | Pro_Lively</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="stylesheet" href="css/projectsStyle.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/89cdcfacd7.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body style="background: var(--bg-main); color: var(--text-strong)">
+    <div class="loading">
+      <div class="loadingContainer">
+        <div class="loadRect" id="rect-1"></div>
+        <div class="loadRect" id="rect-2"></div>
+        <div class="loadRect" id="rect-3"></div>
+        <div class="loadRect" id="rect-4"></div>
+      </div>
+      <h3>loading...</h3>
+    </div>
+    <nav id="nav-bar" class="side-nav">
+      <div class="top-nav">
+        <div class="nav-menu">
+          <ul>
+            <li>
+              <a href="index.html">Home</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="projects_artisticList.html">Projects</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="about.html">About</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="blogs.html">Blog</a>
+              <div class="throughLine"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-shell stack">
+      <!-- Section 1: Project Title and Introduction -->
+      <section class="project-section">
+        <h1 class="title-1">lively (Lively)</h1>
+        <p class="body-col-1">
+          <strong>lively</strong> is an audio visual and interactive performance installation inspired by the lively atmosphere of Chinese New Year. The whole performance is arranged through data and programming. Rhythm is not only sound in this work. It also drives mechanical movement and projected visuals, so the audience can both feel the atmosphere and see how it is formed.
+        </p>
+        <div class="project-metadata">
+          <span>Date: Sept. 2019</span>
+          <span>Key Words: Performance, Robotic Performance, Physical Computing, Projection Mapping, Interactive Installation</span>
+        </div>
+        <div class="image-column-1">
+          <img src="img/livelyImg/thumbNail.jpg" alt="Lively installation" />
+        </div>
+      </section>
+
+      <!-- Section 2: Concept -->
+      <section class="project-section">
+        <h2 class="title-2">Concept</h2>
+        <p class="body-col-1">
+          The feeling of lively is not only about being louder or faster. It comes from many elements working together, such as rhythm density, changes in strength, repeated actions, sudden breaks, and a sense that events keep happening in the space. People can feel it clearly, but it is hard to describe and even harder to reproduce.
+        </p>
+        <p class="body-col-1">
+          This project treats lively as a system. It breaks the atmosphere into controllable variables and relationships, such as rhythm density, strike intensity, strike position, and visual feedback. These parts are then programmed into a repeatable machine performance.
+        </p>
+      </section>
+
+      <!-- Section 3: System and Process -->
+      <section class="project-section">
+        <h2 class="title-2">System and Process</h2>
+        <p class="body-col-1">
+          The work is built from four connected modules. They generate motion, arrange rhythm, control hardware, and project visuals. All parts run on the same timeline and form a closed loop between rules, actions, and feedback.
+        </p>
+
+        <h3 class="title-3">Mechanical Arm Design and Fabrication</h3>
+        <p class="body-col-1">
+          The mechanical arm is designed from the gesture and logic of drumming. It supports two main movements.
+        </p>
+        <p class="body-col-1">
+          One is horizontal rotation. It controls where the drumstick hits the drum surface, from the center to the edge. This changes both the sound and the tension of the performance.
+        </p>
+        <p class="body-col-1">
+          The other is vertical rotation. It controls how the drumstick lifts and drops. This creates differences in speed, strength, pauses, and repeated hits.
+        </p>
+        <p class="body-col-1">
+          The arm is made with methods such as 3D printing and laser cutting. The goal is stable motion and clear control, so the performance can be repeated and adjusted.
+        </p>
+
+        <h3 class="title-3">Max MSP for Rhythm Choreography</h3>
+        <p class="body-col-1">
+          Max MSP is the control center for the performance. It arranges the full timeline and programs the drum rhythms, trigger signals, and strike positions. It controls the physical device and also drives the visuals at the same time. The result is not random drumming. It is a structured performance built from rules and timing.
+        </p>
+
+        <h3 class="title-3">Arduino for Motion Control</h3>
+        <p class="body-col-1">
+          Arduino reads the control signals from Max MSP and turns them into motion commands for the arm. PWM signals are used to drive the servos. An expansion board supports control for eight servos. This hardware layer turns rhythm data into real physical events, so the audience can see how the system builds intensity over time.
+        </p>
+
+        <h3 class="title-3">openFrameworks for Projection Mapping</h3>
+        <p class="body-col-1">
+          openFrameworks is used for projection mapping. It projects visuals onto the surface of the device as an interface and strengthens the immersive feeling. The visuals change with the drum beats and strike positions. It makes hidden parts of the performance visible, such as rhythm density, trigger intensity, and movement across the drum surface.
+        </p>
+
+        <div class="image-column-4">
+          <img src="img/livelyImg/PhysicalStructure.jpg" alt="Physical structure" />
+          <img src="img/livelyImg/3DPrinting2.jpg" alt="3D printing parts" />
+          <img src="img/livelyImg/laserCut2.jpg" alt="Laser cut parts" />
+          <img src="img/livelyImg/lively_maxmsp.jpg" alt="Max MSP interface" />
+        </div>
+      </section>
+
+      <!-- Section 4: Viewing Experience -->
+      <section class="project-section">
+        <h2 class="title-2">Viewing Experience</h2>
+        <p class="body-col-1">
+          In the space, the audience faces a system that performs. The mechanical arm produces sound and motion. The projection provides visual feedback. The programmed timeline gives structure. As the rhythm becomes denser, the strike position shifts, and the visuals respond more strongly, the atmosphere grows from a clear set of relationships rather than from volume alone.
+        </p>
+      </section>
+
+      <!-- Section 5: Method and Experimental Approach -->
+      <section class="project-section">
+        <h2 class="title-2">Method and Experimental Approach</h2>
+        <p class="body-col-1">
+          In 2018, real time control and projection mapping were not rare tools. The experimental part of lively does not depend on technical novelty. It comes from using an algorithmic method to rebuild the feeling of a specific scene. The scene is understood as a system of relationships. By adjusting parameters and testing the results, the work studies how an atmosphere can be composed, performed, and iterated as a repeatable mechanism.
+        </p>
+      </section>
+
+      <!-- Section 6: Artistic Statement -->
+      <section class="project-section">
+        <h2 class="title-2">Artistic Statement</h2>
+        <p class="body-col-1">
+          Dongyuan Liu is interested in how a scene becomes an experience. For him, lively is not a single sound or image. It is a state built from relationships that accumulate in time and space. In lively, he models the atmosphere of Chinese New Year as a system and rebuilds it through rhythm, position, intensity, and feedback. He hopes the audience can be drawn into the performance, while also noticing that the emotional intensity is produced by an organized structure that can be observed, adjusted, and replayed.
+        </p>
+      </section>
+
+      <!-- Section 7: Videos -->
+      <section class="project-section">
+        <div class="video-embed">
+          <iframe 
+            src="https://player.vimeo.com/video/358951134?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+            width="1920" 
+            height="1080" 
+            frameborder="0" 
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            title="Lively">
+          </iframe>
+        </div>
+        <div class="video-embed">
+          <iframe 
+            width="1042" 
+            height="586" 
+            src="https://www.youtube.com/embed/cLdxMpiOoek" 
+            title="Making progress" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer">
+        <p>Dongyuan Liu &copy;2020, All Rights Reserved</p>
+      </div>
+    </footer>
+    <script src="./js/loading.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
+

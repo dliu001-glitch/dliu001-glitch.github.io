@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dongyuan Liu | Pro_shaderPractice</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="stylesheet" href="css/projectsStyle.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/89cdcfacd7.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body style="background: var(--bg-main); color: var(--text-strong)">
+    <div class="loading">
+      <div class="loadingContainer">
+        <div class="loadRect" id="rect-1"></div>
+        <div class="loadRect" id="rect-2"></div>
+        <div class="loadRect" id="rect-3"></div>
+        <div class="loadRect" id="rect-4"></div>
+      </div>
+      <h3>loading...</h3>
+    </div>
+    <nav id="nav-bar" class="side-nav">
+      <div class="top-nav">
+        <div class="nav-menu">
+          <ul>
+            <li>
+              <a href="index.html">Home</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="projects_artisticList.html">Projects</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="about.html">About</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="blogs.html">Blog</a>
+              <div class="throughLine"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-shell stack">
+      <!-- Section 1: Project Title and Introduction -->
+      <section class="project-section">
+        <h1 class="title-1">Shader Practice</h1>
+        <div class="project-metadata">
+          <span>Date: Mar. 2021</span>
+          <span>Key Words: Creative coding, Three.js, Shader, GLSL</span>
+        </div>
+        <p class="body-col-1">
+          This project was built upon GLSL. To check the visual effect, please use
+          modern browsers on a pc or mac.
+        </p>
+        <p class="body-col-1">
+          For Ref. check
+          <a
+            style="color: skyblue"
+            href="https://www.youtube.com/watch?v=3CycKKJiwis&list=PLGmrMu-IwbguU_nY2egTFmlg691DN7uE5&index=19"
+            >The Art of Code</a
+          >
+        </p>
+      </section>
+
+      <!-- Section 2: Shader Canvas -->
+      <section class="project-section">
+        <div class="shaderCanvas">
+          <div id="gui"></div>
+          <canvas id="c"> </canvas>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer">
+        <p>Dongyuan Liu &copy;2020, All Rights Reserved</p>
+      </div>
+    </footer>
+    <script src="./js/loading.js"></script>
+    <script src="./js/app.js"></script>
+    <script type="module" src="./js/shader/shaderPractice_01.js"></script>
+  </body>
+</html>

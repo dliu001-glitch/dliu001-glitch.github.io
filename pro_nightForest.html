@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dongyuan Liu | Pro_Working Space</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <link rel="stylesheet" href="css/projectsStyle.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/89cdcfacd7.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body style="background: var(--bg-main); color: var(--text-strong)">
+    <div class="loading">
+      <div class="loadingContainer">
+        <div class="loadRect" id="rect-1"></div>
+        <div class="loadRect" id="rect-2"></div>
+        <div class="loadRect" id="rect-3"></div>
+        <div class="loadRect" id="rect-4"></div>
+      </div>
+      <h3>loading...</h3>
+    </div>
+    <nav id="nav-bar" class="side-nav">
+      <div class="top-nav">
+        <div class="nav-menu">
+          <ul>
+            <li>
+              <a href="index.html">Home</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="projects_artisticList.html">Projects</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="about.html">About</a>
+              <div class="throughLine"></div>
+            </li>
+            <li>
+              <a href="blogs.html">Blog</a>
+              <div class="throughLine"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-shell stack">
+      <!-- Section 1: Project Title and Introduction -->
+      <section class="project-section">
+        <h1 class="title-1">Night Forest</h1>
+        <p class="body-col-1">
+          Night Forest is an interactive immersion environment, whose goal is
+          building a forest environment with fluorescent effect. I was inspired
+          by the TeamLab projects, which have dreamlike environments. This
+          project is also one part of my research project which is about the
+          human relations. About the topic of interactive immersion environment,
+          researchers always talk about the relations between human and visual,
+          human and auditory, and human and space. I, however, want to explore
+          the role of technology and how to adjust the relationships between
+          humans and humans. David Rokeby explained，"Rather than creating
+          finished works, the interactive artist creates relationships". There
+          are a lot of relationships in a common space. Technology as a
+          mediator, it builds the connections among human. In my project, I also
+          want to talk about the relations between human and nature, which is
+          human always influence nature environment, but they are also
+          influenced by nature environment. Furthermore, people are also one
+          part of the environment. In daily life, people are hard to realize
+          they are affecting nature environment. What I want to highlight is the
+          unconscious state of people, a kind of passive state. The passive
+          state also exists among audiences. To be specific, the connections
+          were built by digital tools. In contrast with Future Park, by TeamLab,
+          this state is more prominent.
+        </p>
+        <p class="body-col-1">
+          This project is mainly composed of two parts. One is the trees which
+          are influenced by people. Another one is the particle systems which
+          are drew based on the human boundary. What's more, I use Kinect to
+          adjust the range of detection area and use ofxCv to calculate the
+          total number of audiences and detect the human boundaries.
+        </p>
+        <div class="project-metadata">
+          <span>Date: Apr. 2019</span>
+          <span>Key Words: Creative Coding, Nature, Interactive Installation, Immersive Environment, openCV</span>
+        </div>
+        <div class="image-column-1">
+          <img src="img/nightForest/few_low.jpg" alt="Night Forest" />
+        </div>
+      </section>
+
+      <!-- Section 2: Images -->
+      <section class="project-section">
+        <div class="image-column-2">
+          <img src="img/nightForest/Introimage.jpg" alt="Night Forest installation" />
+          <img src="img/nightForest/introimage1.jpg" alt="Night Forest installation" />
+        </div>
+      </section>
+
+      <!-- Section 3: Technical Details -->
+      <section class="project-section">
+        <h2 class="title-2">Technical Implementation</h2>
+        <div class="image-column-1">
+          <img src="img/nightForest/Test.jpg" alt="Technical test" />
+        </div>
+        <p class="body-col-1">
+          When the total number of people increase, new class of tree will be
+          generated and pushed back in the vector, and then the new tree will
+          grow. I also map the total number of trees to the total number of
+          people to set the limitation, which can make sure computer does not
+          crash because of the huge number of branches. As for the color
+          system, I choose ADD mode which can make the effect of fluorescent.
+        </p>
+        <p class="body-col-1">
+          When the Kinect find the founder path, the for loop function will
+          loop all the points which compose of polylines, and then I use
+          calculation(g+=50) to skip some points to make sure that the total
+          number of particles will not be too much.
+        </p>
+      </section>
+
+      <!-- Section 4: Video -->
+      <section class="project-section">
+        <div class="video-embed">
+          <iframe
+            width="1171"
+            height="659"
+            src="https://www.youtube.com/embed/ExaBKprnPzY"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            title="Night Forest">
+          </iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer">
+        <p>Dongyuan Liu &copy;2020, All Rights Reserved</p>
+      </div>
+    </footer>
+    <script src="./js/loading.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
